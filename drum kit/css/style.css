@@ -1,0 +1,48 @@
+body{
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-size: 16px;
+  background-image: url('http://lorempixel.com/1920/1920/nightlife');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+.keys{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+}
+
+.key{
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  margin: 2em;
+  border: 3px solid yellow;
+  border-radius: 5px;
+  background-color: orange;
+  color: black;
+}
+
+.key kbd{
+  display: block;
+  font-size: 4em;
+  margin-bottom: 10px;
+}
+
+.key span{
+  width: 100%;
+  font-family: monospace;
+}
+
+.keyPressed{
+  transform: scale(1.02);
+  transition-timing-function: ease-out;
+  transition-duration: 0.02s;
+  background: rgb(255,130,00);
+}

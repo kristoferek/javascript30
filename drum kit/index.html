@@ -8,42 +8,44 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <div data-char="81" class="key">
-    <kbd>Q</kbd>
-    <span>bongo</span>
-  </div>
-  <div data-char="87" class="key">
-    <kbd>W</kbd>
-    <span>can</span>
-  </div>
-  <div data-char="69" class="key">
-    <kbd>E</kbd>
-    <span>triangle</span>
-  </div>
-  <div data-char="82" class="key">
-    <kbd>R</kbd>
-    <span>rimshot</span>
-  </div>
-  <div data-char="84" class="key">
-    <kbd>T</kbd>
-    <span>shaker</span>
-  </div>
-  <div data-char="89" class="key">
-    <kbd>Y</kbd>
-    <span>stick</span>
-  </div>
-  <div data-char="85" class="key">
-    <kbd>U</kbd>
-    <span>tabla</span>
-  </div>
-  <div data-char="73" class="key">
-    <kbd>I</kbd>
-    <span>tambourine</span>
-  </div>
-  <div data-char="79" class="key">
-    <kbd>O</kbd>
-    <span>tom</span>
-  </div>
+  <section class="keys">
+    <div class="key" data-char="81">
+      <kbd>Q</kbd>
+      <span>bongo</span>
+    </div>
+    <div data-char="87" class="key">
+      <kbd>W</kbd>
+      <span>can</span>
+    </div>
+    <div data-char="69" class="key">
+      <kbd>E</kbd>
+      <span>triangle</span>
+    </div>
+    <div data-char="82" class="key">
+      <kbd>R</kbd>
+      <span>rimshot</span>
+    </div>
+    <div data-char="84" class="key">
+      <kbd>T</kbd>
+      <span>shaker</span>
+    </div>
+    <div data-char="89" class="key">
+      <kbd>Y</kbd>
+      <span>stick</span>
+    </div>
+    <div data-char="85" class="key">
+      <kbd>U</kbd>
+      <span>tabla</span>
+    </div>
+    <div data-char="73" class="key">
+      <kbd>I</kbd>
+      <span>tambourine</span>
+    </div>
+    <div data-char="79" class="key">
+      <kbd>O</kbd>
+      <span>tom</span>
+    </div>
+  </section>
 
   <audio src="./sounds/bongo.wav" data-key="81">
   <audio src="./sounds/can.wav" data-key="87">
@@ -59,10 +61,17 @@
   function handleKeyDown(e){
     const keySound = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     if (!keySound) return; // If pressed key doesn't match available sounds stop function
-    const keyPressed = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    keySound.currentTime = 0; // Restart playing sound
+    keySound.currentTime = 0; // Restart playing sound each time key is pressed
     keySound.play();
+    const keyPressed = document.querySelector(`.key[data-char="${e.keyCode}"]`);
+    keyPressed.classList.add('keyPressed');
+  }
+  function handleKeyUp(e){
+    const keyPressed = document.querySelector(`.key[data-char="${e.keyCode}"]`);
+    if (!keyPressed) return;
+    keyPressed.classList.remove('keyPressed');
   }
   window.addEventListener('keydown', handleKeyDown);
+  window.addEventListener('keyup', handleKeyUp);
 
 </script>
