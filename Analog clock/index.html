@@ -16,10 +16,12 @@
     </div>
 </body>
 <script type="text/javascript">
+  // Finds clock hands
   const secondHand = document.querySelector('.second-hand');
   const minuteHand = document.querySelector('.minute-hand');
   const hourHand = document.querySelector('.hour-hand');
 
+  // Function rotates each hand depending on current seconds, minutes and hours
   function handleInterval(){
     const currentTime = new Date();
     const seconds = currentTime.getSeconds();
@@ -29,6 +31,8 @@
     minuteHand.style.transform = `rotate(${((minutes/60)*360)}deg)`;
     hourHand.style.transform = `rotate(${((hours/12)*360)}deg)`;
   }
+
+  // Go on and rotate hands
   setInterval(handleInterval, 1000);
 
 </script>
