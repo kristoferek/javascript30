@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blur control - JavaScript30</title>
+  <meta name="description" content="Javascript30 task involving css variables and cotrol form">
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="container">
+    <section class="title">
+      <h1>Transform blur and color with <strong>css variable</strong> using inreplaceable <strong>JavaScript</strong></h1>
+    </section>
+    <section class="control">
+      <label for="thickness">
+        Border thickness:
+      </label>
+       <input type="range" id="thickness" name="border" min="3" max="15" value="3" data-size="px" data-stylevar="thickness"><br>
+      <label for="blur">
+        Image blur:
+      </label>
+      <input type="range" id="blur" name="blur" min="0" max="20" value="0" data-size="px" data-stylevar="blur"><br>
+      <label for="color">
+        Color: 
+      </label>
+      <input type="color" name="color" value="#fff025" data-size="" data-stylevar="my-color">
+    </section>
+    <section class="photo">
+      <div class="canvas">
+        <img src="./kettler.jpg" alt="">
+      </div>
+    </section>
+  </div>
+</body>
+<script type="text/javascript">
+  // Find input color
+  const controls = document.querySelectorAll('.container input');
+
+  // Update css variable memorized in data-stylevar property with input value and append appropiate suffix stpred in dataset-size
+  function handleUpdate() {
+    document.documentElement.style.setProperty(`--${this.dataset.stylevar}`, this.value + this.dataset.size);
+  }
+
+  // Update controls on change and mouse move
+  controls.forEach(input => input.addEventListener('change', handleUpdate));
+  controls.forEach(control => control.addEventListener('mousemove', handleUpdate));
+</script>
